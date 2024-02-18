@@ -1,11 +1,18 @@
-num = int(input())
-total = 2**num
-print(total)
-# A A B .
-# A A A .
-# A B B 
-# A B A
-# B A B
-# B B B
-# B A A .
-# B A B
+from functools import reduce
+
+def euclides(a, b):
+    while b != 0:
+        a, b = b, a % b
+    return a
+
+
+def mmc(a, b):
+  
+    if a == 0 or b == 0:
+        return 0
+    else:
+        return abs(a * b) // euclides(a, b)
+
+values = map(int, input().split())
+
+print(reduce(mmc,values))
