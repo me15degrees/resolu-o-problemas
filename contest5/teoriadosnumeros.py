@@ -24,3 +24,28 @@ c = int(input("Digite o valor de c: "))
 
 solution = solve_diophantine(a, b, c)
 print("Solução para a equação {}x + {}y = {}: x = {}, y = {}".format(a, b, c, solution[0], solution[1]))
+
+
+# encontre o mdc dos coeficientes usando o algoritmo de euclides
+# escreva o mdc(a,b) = c como combinação linear dos coeficientes 252 e 105
+# multiplique o mdc(a,b) = c de modo a obter o termo independente 42
+
+from math import gcd
+
+def phi(n):
+    result = 1
+    for i in range(2, n):
+        if gcd(i, n) == 1:
+            result += 1
+    return result
+
+def euler_theorem(a, n):
+    if gcd(a, n) != 1:
+        return None  # a e n não são coprimos
+    return pow(a, phi(n), n)
+
+# Exemplo de uso:
+a = 7
+n = 15
+result = euler_theorem(a, n)
+print(f"{a}^{phi(n)} mod {n} = {result}")
