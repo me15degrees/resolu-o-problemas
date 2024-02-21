@@ -49,3 +49,20 @@ a = 7
 n = 15
 result = euler_theorem(a, n)
 print(f"{a}^{phi(n)} mod {n} = {result}")
+
+from math import gcd
+
+def decimals_to_fraction(num):
+
+    numero_str = str(num)
+
+    if '.' in numero_str:
+        indice_ponto = numero_str.index('.')
+        zeros = len(numero_str) - indice_ponto - 1
+        base = 10**zeros
+
+    numerador, denominador = int((num*base))//gcd(int(num*base),base), base//gcd(int(num*base),base)
+    
+    return f"{numerador}/{denominador}"
+
+print(decimals_to_fraction(0.60))
